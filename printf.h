@@ -1,5 +1,5 @@
-#ifndef _MY_PRINTF_H_
-#define _MY_PRINTF_H_
+#ifndef PRINTF_H
+#define PRINTF_H
 
 #include <stdlib.h>
 #include <stdarg.h>
@@ -13,4 +13,4 @@ int _putintbase(char *hex, unsigned int num, int base, char c);
 int checkflag(va_list *ap, char flag);
 int my_printf(char * restrict format, ...);
 
-#endif /*_MY_PRINTF_H_*/
+#endif /*PRINTF_H*/
