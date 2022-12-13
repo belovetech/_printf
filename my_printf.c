@@ -38,6 +38,9 @@ int checkflag(va_list *ap, char flag)
     else if (flag == '%') {
        len += _putchar('%');
     }
+    else if (flag == 'p') {
+
+    }
     
     va_end(*ap);
 
@@ -63,4 +66,13 @@ int my_printf(char * restrict format, ...)
     } 
     va_end(ap);
     return len;
+}
+
+int main(void)
+{
+    int a = 10;
+
+    printf("%p\n", &a);
+
+    return (0);
 }

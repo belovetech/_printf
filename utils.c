@@ -57,15 +57,3 @@ int _putint(int n)
     
     return (len);
 }
-
-/*
-int main(void) 
-{
-    char *str = "gandalf";
-    int x = printf("Hello %s\n", str);
-    int y = my_printf("Hello %s\n", str);
-
-    my_printf("%d => %d\n", x, y);
-
-    return (0);
-}*/
