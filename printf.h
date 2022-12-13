@@ -10,6 +10,7 @@ int _putint(int n);
 int _putchar(int c);
 int _printstr(char *str);
 int _putintbase(char *hex, unsigned int num, int base, char c);
+char* _putpointer(unsigned long int number, int base);
 int checkflag(va_list *ap, char flag);
 int my_printf(char * restrict format, ...);
 

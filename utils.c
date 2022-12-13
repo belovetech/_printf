@@ -57,3 +57,31 @@ int _putint(int n)
     
     return (len);
 }
+
+char* _putpointer(unsigned long int number, int base){
+    unsigned long int original_n = number;
+    unsigned int len = 0;
+    char* result = NULL;
+    unsigned long int temp_n;
+
+    original_n = original_n > 0 ? original_n : -(original_n);
+    while (number){
+        number = number / base;
+        len++;
+    }
+    if (!(result = (char*)malloc(sizeof(char) * len + 1))){
+        return NULL;
+    }
+    *(result + len) = '\0';
+    len--;
+    while (original_n > 0){
+        temp_n = original_n % base;
+        if (temp_n < 10)
+            *(result + len) = temp_n + '0';
+        else
+            *(result + len) = ((temp_n)-10 + 97);
+        original_n = original_n / base;
+        len--;
+    }
+    return result;
+}

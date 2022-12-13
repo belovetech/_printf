@@ -1,12 +1,15 @@
 #include "printf.h"
 
+
 int checkflag(va_list *ap, char flag)
 {
     char *str, c, buf[100];
     int len = 0;
     int d;
     unsigned int num;
-    
+    intptr_t num2;
+    char* res_convert = NULL;
+
     if (flag == 's') {
         str = va_arg(*ap, char*);
         if (str) len += _printstr(str);
@@ -39,7 +42,11 @@ int checkflag(va_list *ap, char flag)
        len += _putchar('%');
     }
     else if (flag == 'p') {
-
+        num2 = va_arg(*ap, intptr_t);
+        res_convert = _putpointer(num2, 16);
+        write(1, "0x", 2);
+        len += _printstr(res_convert);
+        len += 2;
     }
     
     va_end(*ap);
@@ -66,13 +73,4 @@ int my_printf(char * restrict format, ...)
     } 
     va_end(ap);
     return len;
-}
-
-int main(void)
-{
-    int a = 10;
-
-    printf("%p\n", &a);
-
-    return (0);
 }
