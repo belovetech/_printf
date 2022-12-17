@@ -1,7 +1,7 @@
 .PHONY: all clean oclean fclean re
 
 CC = gcc
-SRC = my_printf.c utils.c
+SRC = my_printf.c
 OBJ = $(SRC:%.c=%.o)
 NAME = my_printf
 CFLAGS = -Wall -Wextra -Werror
