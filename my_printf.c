@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
+
 int _putchar(int c)
 {
     return (write(1, &c, 1));
@@ -11,12 +13,13 @@ int _putchar(int c)
 int _printstr(char *str)
 {
     int len =  0;
-    
+
     while (*str != '\0') {
         _putchar(*str);
         str++;
         len++;
     }
+
     return (len);
 }
 
@@ -126,8 +129,9 @@ int checkflag(va_list *ap, char flag)
     intptr_t num2;
     char* res_convert = NULL;
 
-    if (flag == 's') {
+    if (flag == 's' || flag == 'S') {
         str = va_arg(*ap, char*);
+        if(str == NULL) str = "(null)";
         if (str) len += _printstr(str);
     }
     else if (flag == 'c') {
@@ -146,13 +150,13 @@ int checkflag(va_list *ap, char flag)
         num = va_arg(*ap, int);
         len += _putintbase(buf, num, 10, 'o');
     }
+    else if (flag == 'x' || flag == 'X') {
+        num = va_arg(*ap, int);
+        len += _putintbase(buf, num, 16, 'X');
+    }
     else if (flag == 'x') {
         num = va_arg(*ap, int);
         len += _putintbase(buf, num, 16, 'x');
-    }
-    else if (flag == 'X') {
-        num = va_arg(*ap, int);
-        len += _putintbase(buf, num, 16, 'X');
     }
     else if (flag == '%') {
        len += _putchar('%');
@@ -190,3 +194,21 @@ int my_printf(char * restrict format, ...)
     va_end(ap);
     return len;
 }
+
+
+/*
+int main() 
+{                      
+                                                                                                                   
+    int ret_val = my_printf("NULL STRING %s!\n", (char *)NULL); 
+    int ret_val2 = printf("NULL STRING %s!\n", (char *)NULL);    
+
+    printf("%d %d\n", ret_val, ret_val2);
+
+
+    // printf("%s", (char*)NULL);
+    // my_printf("%s", (char*)NULL);
+
+                                                                                                                                                            
+    return ret_val;                                                                                                                                           
+}*/
