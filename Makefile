@@ -1,14 +1,13 @@
 .PHONY: all clean oclean fclean re
 
 CC = gcc
-SRC = my_printf.c
+SRC = _printf.c utils.c checkflag.c
 OBJ = $(SRC:%.c=%.o)
-NAME = my_printf
-CFLAGS = -Wall -Wextra -Werror
+NAME = _printf
 RM = rm -f
 
 all: $(OBJ)
-		$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
 	$(RM) *~ $(NAME)
